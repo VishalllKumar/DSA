@@ -1149,6 +1149,7 @@ int main()
     insertAtPos(header,7,25);
     display(header);
     cout<<header->data;
+    
 }
 
 
