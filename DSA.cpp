@@ -868,6 +868,70 @@
 //     }
 //     temp->next = newNode;
 // }
+// void deletefrompos(Node* header,int pos)
+// {
+//     if(header->next == NULL)
+//     {
+//         return;
+//     }
+//     if(pos > header->data)
+//     {
+//         cout<<"heallowww world";
+//         return;
+//     }
+
+
+//     Node* temp = header->next;
+
+//     if(temp->next == NULL && pos == 1)
+//     {
+//         deletefromstart(header);
+//         return;
+//     }
+//     if(pos == header->next)
+//     {
+//         deletefromlast(header);
+//         return;
+//     }
+//     int count = 1;
+//     while(temp != NULL && count<pos-1)
+//     {
+//         temp = temp->next;
+//         count++;
+//     }
+//     Node
+// }
+// void deletefromstart(Node* header){
+//     if(header ->next==NULL){
+//         cout<<"LL is empty"<<endl;
+//         return ;}
+//     Node* temp = header->next;
+//     header->next = temp->next;
+//     temp->next = NULL;
+//     delete temp;
+// }
+
+// void deletefromlast(Node* header)
+// {
+//     Node* temp = header->next;
+
+//     if(header->next == NULL)
+//     {
+//         header->next = NULL;
+//         delete temp;
+//         (header->data)--;
+//         return;
+//     }
+//     while(temp->next->next != NULL)
+//     {
+//         temp = temp->next;
+//     }
+//     Node* curr = temp->next;
+//     temp->next = NULL;
+//     delete curr;
+//     (header->data)--;
+    
+// }
 
 // void display(Node *header){
 //         Node *temp = header->next;
@@ -917,10 +981,174 @@
     
 //     cout<<header->data;
 
+//     deletefromstart(header);
+//     display(header);
+//     cout<<header->data;
+
+//     deletefromlast(header);
+//     display(header);
+//     cout<<header->data;
+    
+//     deletefrompos(header,1);
 // }
 
 
+// 2D ARRAY :
+// LARGEST :-
 
+// #include <iostream>
+// using namespace std;
+// int main()
+// {
+//     int arr[4][4] = 
+//     {
+//         {10,1,1,10},
+//         {1,10,10,1},
+//         {1,10,10,1},
+//         {10,1,1,10}
+//     };
+//     // int maxi = arr[0][0];
+//     // int maxiRow = 0;
+//     // int maxiCol = 0;
+//     // for(int i = 0 ; i < 3 ; i++)
+//     // {
+//     //     for(int j = 0 ; j < 3 ; j++)
+//     //     {
+//     //         if(arr[i][j] > maxi)
+//     //         {
+//     //             maxi = arr[i][j];
+//     //             maxiRow = i;
+//     //             maxiCol = j;
+//     //         }
+//     //     }
+//     // }
+//     // cout<<"Maximum element is : "<<maxi<<" at ("<<maxiRow<<","<<maxiCol<<")";
+//     int fstDiaSum = 0;
+//     int SecDiaSum = 0;
+//     for(int i = 0 ; i < 4 ; i++)
+//     {
+//             fstDiaSum += arr[i][i]; 
+//             SecDiaSum += arr[i][3-i];
+        
+//     }
+//     cout<<fstDiaSum<<endl;
+//     cout<<SecDiaSum<<endl;
+// }
 
+// #include<iostream>
+// using namespace std;
+// int main()
+// {
+//     string s = "I am good";
+//     int vowels = 0;
+//     int consonents = 0;
+//     int spaces = 0;
+    
+//     for(int i = 0 ; i <= s.size() ; i++)
+//     {
+//         tolower(s[i]);
+//         if(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u')
+//         {
+//             vowels++;
+//         }
+//         else if(s[i] == ' ')
+//         {
+//             spaces++;
+//         }
+//         else
+//         {
+//             consonents++;
+//         }
+//     }
+//     cout<<vowels<<endl;
+//     cout<<spaces<<endl;
+//     cout<<consonents<<endl;
+// }
+
+// CIRCULAR LINKED LIST NODE :
+
+#include <iostream>
+using namespace std;
+class Node
+{
+ public:
+ int data;
+ Node *next;
+ 
+ Node(int d)
+ {
+    data = d;
+    next = NULL;
+ }
+};
+void insertAtStart(Node* header, int val)
+{
+    Node* newNode = new Node(val);
+    newNode->next = header->next;
+    header->next = newNode->next;
+    (header->data)++;
+}
+void insertAtLast(Node* header , int val)
+{
+   Node* newNode = new Node(val);
+   Node* temp = header->next;
+   while(temp->next != header)
+   {
+    temp = temp->next;
+   }
+   newNode->next = header;
+   temp->next = newNode;
+    (header->data)++;
+}
+void insertAtPos(Node* header,int pos,int val)
+{
+    if(pos == 1)
+    {
+        insertAtStart(header,val);
+        return;
+    }
+    Node* temp = header->next;
+    int count = 1;
+    while(temp != header && count<pos-1)
+    {
+        temp = temp->next;
+        count++;
+    }
+    if(temp == header)
+    {
+        cout<<"you are fool give right pos !! sry"<<endl;
+        return;
+    }
+    Node* newNode = new Node(val);
+    (header->data)++;
+    newNode->next = temp->next;
+    temp->next = newNode;
+}
+void display(Node* header)
+{
+    Node* temp = header->next;
+    while(temp!=header )
+    {
+        cout<<temp->data<<"->";
+        temp = temp->next;
+    }
+    cout<<endl;
+}
+int main()
+{
+    Node*  header = new Node(0);
+    header->next = header;
+
+    insertAtStart(header,10);
+    insertAtLast(header,20);
+    insertAtLast(header,30);
+    insertAtLast(header,40);
+    insertAtLast(header,50);
+    display(header);
+    cout<<header->data;
+    insertAtPos(header,7,25);
+    display(header);
+    cout<<header->data;
+}
 
 
