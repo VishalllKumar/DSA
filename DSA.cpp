@@ -1065,91 +1065,477 @@
 //     cout<<consonents<<endl;
 // }
 
-// CIRCULAR LINKED LIST NODE :
+// #include<iostream>
+// using namespace std;
 
-#include <iostream>
-using namespace std;
-class Node
-{
- public:
- int data;
- Node *next;
- 
- Node(int d)
- {
-    data = d;
-    next = NULL;
- }
-};
-void insertAtStart(Node* header, int val)
-{
-    Node* newNode = new Node(val);
-    newNode->next = header->next;
-    header->next = newNode->next;
-    (header->data)++;
-}
-void insertAtLast(Node* header , int val)
-{
-   Node* newNode = new Node(val);
-   Node* temp = header->next;
-   while(temp->next != header)
-   {
-    temp = temp->next;
-   }
-   newNode->next = header;
-   temp->next = newNode;
-    (header->data)++;
-}
-void insertAtPos(Node* header,int pos,int val)
-{
-    if(pos == 1)
-    {
-        insertAtStart(header,val);
-        return;
-    }
-    Node* temp = header->next;
-    int count = 1;
-    while(temp != header && count<pos-1)
-    {
-        temp = temp->next;
-        count++;
-    }
-    if(temp == header)
-    {
-        cout<<"you are fool give right pos !! sry"<<endl;
-        return;
-    }
-    Node* newNode = new Node(val);
-    (header->data)++;
-    newNode->next = temp->next;
-    temp->next = newNode;
-}
-void display(Node* header)
-{
-    Node* temp = header->next;
-    while(temp!=header )
-    {
-        cout<<temp->data<<"->";
-        temp = temp->next;
-    }
-    cout<<endl;
-}
-int main()
-{
-    Node*  header = new Node(0);
-    header->next = header;
-
-    insertAtStart(header,10);
-    insertAtLast(header,20);
-    insertAtLast(header,30);
-    insertAtLast(header,40);
-    insertAtLast(header,50);
-    display(header);
-    cout<<header->data;
-    insertAtPos(header,7,25);
-    display(header);
-    cout<<header->data;
+// class Node{
+//     public:
+//     int data;
+//     Node *next;
     
-}
+//     Node(int d){
+//         data = d;
+//         next = NULL;
+//     }
 
+// };
+
+// void display(Node *header){
+    
+//     if(header->next == header){
+//         cout<<"LL is empty";
+//     }
+//     Node* temp = header->next;
+//         while(temp != header){
+//             cout<<temp->data<<"->";
+//             temp = temp->next;
+//         }
+//           cout<<endl;
+//     }
+
+//     void  insertAtStart(Node* header,int val){
+//     Node* newNode = new Node(val);
+
+//     newNode->next = header->next;
+//     header->next = newNode;
+
+//     (header->data)++;
+// }
+
+//  void  insertAtLast(Node* header,int val){
+//     Node* newNode = new Node(val);
+
+//     Node* temp = header->next;
+
+//     while(temp->next != header){
+//         temp = temp->next;
+//     }
+
+//     newNode->next = header;
+//     temp->next = newNode;
+//     (header->data)++;
+// }
+// void insertAtPos(Node* header,int pos,int val){
+    
+//     if(pos == 1){
+//         insertAtStart(header,val);
+//         return;
+//     }
+
+//     Node* temp = header->next;
+
+//     int count = 1;
+
+//     while(temp != header && count< pos-1){
+//         temp = temp->next;
+//         count++;
+//     }
+    
+//     if(temp == header){
+//         cout<<"You are fool give right pos !!!sry "<<endl;
+//         return;
+//     }
+
+//      Node* newNode = new Node(val);
+//     (header->data)++;
+
+//     newNode->next = temp->next;
+
+//     temp->next = newNode;
+    
+
+// }
+
+// void deleteFromStart(Node* header){
+//     if(header->next == header){
+//         cout<<"LL is empty"<<endl;
+//         return;
+//     }
+//     Node* temp = header->next;
+//     header->next = temp->next;
+//     temp->next = NULL;
+//     delete temp;
+//     (header->data)--;
+// }
+
+// void deleteFromLast(Node* header){
+//     if(header->next == header){
+//         cout<<"LL is empty"<<endl;
+//         return;
+//     }
+//     Node* temp = header->next;
+
+//     while(temp->next->next != header){
+//         temp = temp->next;
+//     }
+
+//     Node* curr = temp->next;
+
+//     temp->next = header;
+
+//     curr->next = NULL;
+//     delete curr;
+//     (header->data)--;
+// }
+
+// void deleteFromPos(Node* header,int pos){
+    
+//     // if(pos == 1){
+//     //     insertAtStart(header,val);
+//     //     return;
+//     // }
+
+//     // Node* temp = header->next;
+
+//     // int count = 1;
+
+//     // while(temp != header && count< pos-1){
+//     //     temp = temp->next;
+//     //     count++;
+//     // }
+    
+//     // if(temp == header){
+//     //     cout<<"You are fool give right pos !!!sry "<<endl;
+//     //     return;
+//     // }
+
+//     //  Node* newNode = new Node(val);
+//     // (header->data)++;
+
+//     // newNode->next = temp->next;
+
+//     // temp->next = newNode;
+    
+
+// }
+
+
+
+
+// int main(){
+
+//     Node* header = new Node(0);
+//     header->next = header;
+
+
+//      insertAtStart(header,10);
+//      insertAtLast(header,20);
+//      insertAtLast(header,30);
+//      insertAtLast(header,40);
+//      insertAtLast(header,50);
+//     display(header);
+//     cout<<header->data<<endl;
+//     // insertAtPos(header,8,35);
+//     // display(header);
+//   //  cout<<header->data;
+// //   deleteFromStart(header);
+// //   display(header);
+// deleteFromLast(header);
+//  display(header);
+//   cout<<header->data;
+// }
+
+
+// DOUBLY : 
+// #include <iostream>
+// using namespace std;
+// class Node
+// {
+// public:
+//     int data;
+//     Node *next;
+//     Node *prev;
+
+//     Node(int d)
+//     {
+//         data = d;
+//         next = NULL;
+//         prev = NULL;
+//     }
+// };
+// void display(Node *head)
+// {
+//     if (head == NULL)
+//     {
+//         cout << "LL is empty" << endl;
+//         return;
+//     }
+//     Node *temp = head;
+
+//     while (temp->next != NULL)
+//     {
+//         cout << temp->data << "->";
+//         temp = temp->next;
+//     }
+//     cout << temp->data;
+//     cout << endl;
+//     while (temp != NULL)
+//     {
+//         cout << temp->data << "->";
+//         temp = temp->prev;
+//     }
+//     cout << endl;
+// }
+// Node *insertAtStart(Node *head, int val)
+// {
+//     Node *newNode = new Node(val);
+
+//     if (head == NULL)
+//     {
+//         return newNode;
+//     }
+
+//     newNode->next = head;
+//     head->prev = newNode;
+
+//     return newNode;
+// }
+// Node *insertAtLast(Node *head, int val)
+// {
+
+//     Node *newNode = new Node(val);
+//     if (head == NULL)
+//     {
+//         return newNode;
+//     }
+
+//     Node *temp = head;
+//     while (temp->next != NULL)
+//     {
+//         temp = temp->next;
+//     }
+//     temp->next = newNode;
+//     newNode->prev = temp;
+//     return head;
+// }
+
+// Node *insertAtPos(Node *head, int pos, int val)
+// {
+
+//     if (pos <= 0)
+//     {
+//         cout << "Invalid pos.." << endl;
+//         return head;
+//     }
+//     if (pos == 1)
+//     {
+//         return insertAtStart(head, val);
+//     }
+
+//     Node *newNode = new Node(val);
+
+//     Node *temp = head;
+
+//     int count = 1;
+
+//     while (temp != NULL && count < pos - 1)
+//     {
+//         temp = temp->next;
+//         count++;
+//     }
+
+//     if (temp == NULL)
+//     {
+//         cout << "Invalid case !!" << endl;
+//         return head;
+//     }
+
+//     newNode->next = temp->next;
+//     newNode->prev = temp;
+
+//     if (temp->next != NULL)
+//     {
+//         temp->next->prev = newNode;
+//     }
+
+//     temp->next = newNode;
+
+//     return head;
+// }
+
+// Node *deleteAtStart(Node *head)
+// {
+//     if (head == NULL || head->next == NULL)
+//     {
+//         cout << "LL is empty" << endl;
+//         return NULL;
+//     }
+//     Node *temp = head;
+//     head = head->next;
+
+//     head->prev = NULL;
+//     temp->next = NULL;
+//     delete temp;
+//     return head;
+// }
+
+// Node *deleteAtLast(Node *head)
+// {
+//     if (head == NULL || head->next == NULL)
+//     {
+//         cout << "LL is empty" << endl;
+//         return NULL;
+//     }
+//     Node *temp = head;
+//     while (temp->next != NULL)
+//     {
+//         temp = temp->next;
+//     }
+
+//     temp->prev->next = NULL;
+
+//     return head;
+// }
+
+// Node* deleteAtPosition(Node* head, int position)
+// {
+
+//     if (head == NULL)
+//     {
+//         cout << "List is empty"<<endl;
+//         return head;
+//     }
+
+//     if (position <= 0)
+//     {
+//         cout << "Invalid position\n";
+//         return head;
+//     }
+
+//     // Delete first node
+//     if (position == 1)
+//     {
+//         return deleteAtStart(head);
+//     }
+
+//     Node *temp = head;
+
+//     // Reach the node to be deleted
+//     for (int i = 1; i < position && temp != NULL; i++)
+//     {
+//         temp = temp->next;
+//     }
+
+//     // Position does not exist
+//     if (temp == NULL)
+//     {
+//         cout << "Invalid position\n";
+//         return head;
+//     }
+
+//     // Connect previous node to next node
+//     temp->prev->next = temp->next;
+
+//     // If temp is not the last node
+//     if (temp->next != NULL)
+//     {
+//         temp->next->prev = temp->prev;
+//     }
+
+//     delete temp;
+
+//     return head;
+// }
+// int main()
+// {
+//     Node *head = NULL;
+//     // Node* n1 = new Node(10);
+//     // head = n1;
+//     // Node* n2 = new Node(20);
+//     // Node* n3 = new Node(30);
+//     // Node* n4 = new Node(40);
+//     // Node* n5 = new Node(50);
+//     // n1->next = n2;
+//     // n2->next = n3;
+//     // n3->next = n4;
+//     // n4->next = n5;
+
+//     // n2->prev = n1;
+//     // n3->prev = n2;
+//     // n4->prev = n3;
+//     // n5->prev = n4;
+
+//     // display(head);
+//     head = insertAtStart(head, 5);
+//     head = insertAtStart(head, 10);
+//     head = insertAtStart(head, 20);
+//     head = insertAtStart(head, 30);
+//     display(head);
+
+//     // head = insertAtLast(head,2);
+//     //  display(head);
+
+//     // head = insertAtPos(head,7,22);
+//     //  display(head);
+
+//     // head = deleteAtLast(head);
+
+//     head = deleteAtPosition(head,3);
+//     display(head);
+// }
+
+// STACKKKKK :
+
+// #include <iostream>
+// using namespace std;
+
+// class Stack{
+//     // int arr[100];
+//     int *arr;
+//     int capacity;
+//     int top = -1;
+//     public:
+//     Stack(int capacity){
+//         this-> capacity = capacity;
+//         arr = new int(capacity);
+//     }
+//     void push(int val){
+//         if(top == capacity -1 ){
+//             cout<<"Stack overflow!!";
+//             return;
+//         }
+//         top++;
+//         arr[top] = val;
+//         cout<<"Inserted element successfully!!"<<endl;
+//     }
+//     int peek(){
+//         if(top == -1){
+//             cout<<"Stack is empty insert element to see!!";
+//             return -1;
+//         }
+//         return arr[top];
+//     }
+//     int pop(){
+//         if(top == -1){
+//             cout<<"stack is empty"<<endl;
+//             return -1;
+//         }
+//         int temp = arr[top];
+//        // cout<<arr[top]<<" is deleted!!"<<endl;
+//         top--;
+//         return temp;
+//     }
+//     int size(){
+//         return top+1;
+//     }
+//     int totalCapacity(){
+//         return capacity;
+//     }
+//     void traversal(){
+//         while (top != -1)
+//         {
+//            cout<<pop()<<" ";
+//        }    
+//     }
+// };
+// int main(){
+//     Stack s1(10);
+//     s1.push(5);
+//      s1.push(10);
+//       s1.push(15);
+//        s1.push(25);
+//         s1.push(55);
+//          s1.push(95);
+//     s1.traversal();
+// }
 
