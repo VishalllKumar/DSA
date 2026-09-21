@@ -77,7 +77,6 @@
 
 // }
 
-//construct ATM machine
 
 // #include <iostream>
 // using namespace std;
@@ -1524,18 +1523,160 @@
 //     void traversal(){
 //         while (top != -1)
 //         {
-//            cout<<pop()<<" ";
-//        }    
+// //            cout<<pop()<<" ";
+// //        }    
+// //     }
+// // };
+// // int main(){
+// //     Stack s1(10);
+// //     s1.push(5);
+// //      s1.push(10);
+// //       s1.push(15);
+// //        s1.push(25);
+// //         s1.push(55);
+// //          s1.push(95);
+// //     s1.traversal();
+// // }
+
+// #include<iostream>
+// using namespace std;
+// class Node {
+// public:
+//     int data;
+//     Node* next;
+//     Node(int d) {
+//         data = d;
+//         next = NULL;
 //     }
 // };
-// int main(){
-//     Stack s1(10);
-//     s1.push(5);
-//      s1.push(10);
-//       s1.push(15);
-//        s1.push(25);
-//         s1.push(55);
-//          s1.push(95);
-//     s1.traversal();
+// class Stack {
+
+//     Node* top;
+//     int count;
+//     public:
+//     Stack() {
+//         top = NULL;
+//         count = 0;
+//     }
+//     void push(int val)
+//     {
+//         Node* newNode = new Node(val);
+//         newNode->next = top;
+//         top = newNode;
+//         count++;
+//     }
+//     int pop()
+//     {
+//         if(top == NULL)
+//         {
+//             cout<<"LL is empty"<<endl;
+//             return -1;
+//         }
+//         count--;
+//         if(top->next == NULL)
+//         {
+//             int temp = top->data;
+//             delete top;
+//             top = NULL;
+//             return temp;
+//         }
+//         Node* temp = top;
+//         top = top->next;
+//         int val = temp->data;
+//         delete temp;
+//         return val;
+//     }
+//     int peek()
+//     {
+//         if(top==NULL)
+//         {
+//             cout<<"Stack is empty"<<endl;
+//             return -1;
+//         }
+//     }
+//     int size()
+//     {
+//         return count;
+//     }
+//     // int findMiddle(stack s)
+//     // {
+        
+//     // }
+// };
+// int main() {
+//     Stack s;
+//     s.push(10);
+//     s.push(20);
+//     s.push(30);
+//     cout << "Stack elements: ";
+//     cout << "Top element: " << s.peek() << endl;
+//     cout << "Stack size: " << s.size() << endl;
+//     cout << "Popped element: " << s.pop() << endl;
+//     cout << "Stack after pop: ";
+//     cout << "Top element: " << s.peek() << endl;
+//     cout << "Stack size: " << s.size() << endl;
+//     return 0;
 // }
 
+
+#include <iostream>
+using namespace std;
+class Queue{
+    int *arr;
+    int capacity;
+    int front;
+    int rear;
+
+    public:
+    Queue(int capacity)
+    {
+        this->capacity = capacity;
+        arr = new int(capacity);
+        front = -1;
+        rear = -1;
+    }
+    void enqueue(int val)
+    {
+        if(front == -1 && rear == -1)
+        {
+            front ++;
+            rear ++;
+            arr[front] == val;
+            return ;
+        }
+        arr[rear++] = val;
+    }
+    int dequeue()
+    {
+        if(front==-1)
+        cout<<"queue is empty"<<endl;
+        return -1;
+        if(front == rear)
+        {
+            int temp = arr[front];
+            front = rear = -1;
+            return temp;
+        }
+
+        int temp = arr[front];
+        front++;
+        return temp;
+    }
+    int peek()
+    {
+        if(front == -1)
+        {
+            return -1;
+        }
+        return arr[front];
+    }
+    int size()
+    {
+
+    }
+
+};
+int main()
+{
+    
+}
